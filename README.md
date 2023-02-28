@@ -14,12 +14,9 @@ GoSSTI is a SSTI scanner for web application. Developed in Go.
 -h, --help Print help information  
 -u, --url <URL> The target IP or domain to scan  
 -p, --payload <PAYLOAD> The payload to trigger potential SSTI  
--X <HTTP_METHOD> The http method to use [default: GET]  
--l, --languages comma-separated languages names to tests (default "all")
+-X <HTTP_METHOD> The HTTP method to use [default: GET]  
+-l, --languages comma-separated languages names to tests (default "all")  
 --user-agent <USER_AGENT> Custom user-agent to use [default: "gossti 1.0.0"]  
--q, --quiet Less output per occurrence  
--v, --verbose More output per occurrence  
--V, --version Print version information
 
 ### Some examples
 
@@ -27,34 +24,13 @@ Using GET method:
 
 `gossti -u http://example.com/something -p "name=SSTI"`
 
-Using POST method:
+Using POST method and only NodeJS:
 
-`gossti -u http://example.com/something -X POST -p "name=SSTI"`
+`gossti -u http://example.com/something -X POST -p "name=SSTI" --languages nodeJS`
 
-Using PUT method:
+Using PUT method and custom user-agent:
 
-`gossti -u http://example.com/something -X PUT -p "name=SSTI"`
-
-Using PATCH method:
-
-`gossti -u http://example.com/something -X PATCH -p "name=SSTI"`
-
-Using DELETE method:
-
-`gossti -u http://example.com/something -X DELETE -p "name=SSTI"`
-
-## Objectives
-
-- [x] Make a CLI using clap.rs
-- [x] Verbose output
-- [x] Add .gitignore
-- [x] Add ci/cd
-- [x] allow custom user-agent
-- [ ] Make decision tree algorithm
-- [ ] Parallel scanning
-- [ ] allow custom headers
-- [ ] allow custom cookies
-- [ ] command executor or os-shell like
+`gossti -u http://example.com/something -X PUT -p "name=SSTI" --user-agent "custom-agent 1.0"`
 
 ## Contributing
 
