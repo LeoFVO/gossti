@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  release-binaries:
+    name: Release binaries
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        goos: [linux, darwin]
+        goarch: ['386', amd64, arm64]
+        exclude:
+          - goarch: '386'
+            goos: darwin
+    steps:
+      - uses: actions/checkout@v3
+      - id: go-version
+        run: echo "version=$(cat ./.go-version)" >> $GITHUB_OUTPUT
+      - uses: wangyoucao577/go-release-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          extra_files: LICENSE README.md
+          project_path: '.'
+          binary_name: 'gossti'
+          goos: ${{ matrix.goos }}
+          goarch: ${{ matrix.goarch }}
+          goversion: ${{ steps.go-version.outputs.version }}
