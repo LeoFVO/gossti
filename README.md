@@ -15,6 +15,7 @@ GoSSTI is a SSTI scanner for web application. Developed in Go.
 -u, --url <URL> The target IP or domain to scan  
 -p, --payload <PAYLOAD> The payload to trigger potential SSTI  
 -X <HTTP_METHOD> The http method to use [default: GET]  
+-l, --languages comma-separated languages names to tests (default "all")
 --user-agent <USER_AGENT> Custom user-agent to use [default: "gossti 1.0.0"]  
 -q, --quiet Less output per occurrence  
 -v, --verbose More output per occurrence  
