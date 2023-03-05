@@ -35,7 +35,7 @@ func (e *Engine) GetConfidence() float64 {
 // and deduce the confidence
 // Returns true if the confidence is above 50%
 func (e *Engine) Scan(req *http.Request, queryString QueryString) bool {
-	fmt.Printf("Scanning with %s\n", e.name)
+	fmt.Printf("-> Trying to detect %s engine.\n", e.name)
 
 	for _, payload := range e.payloads {
 		if queryString.Check(req, payload) {
@@ -44,6 +44,6 @@ func (e *Engine) Scan(req *http.Request, queryString QueryString) bool {
 		}
 	}
 
-	fmt.Printf("Confidence for %s is %.2f %%\n\n", e.name, e.GetConfidence())
+	fmt.Printf("   Confidence for %s is %.2f %%\n\n", e.name, e.GetConfidence())
 	return e.GetConfidence() >= 50.00
 }

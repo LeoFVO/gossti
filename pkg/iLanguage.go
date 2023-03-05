@@ -50,7 +50,7 @@ func (l *Language) GetName() string {
 
 // Set the name of the language
 func (l *Language) Detect(req *http.Request, queryString QueryString) {
-	fmt.Printf("Detecting language with %s\n", l.GetName())
+	fmt.Printf("Starting detection for %s language.\n", l.GetName())
 
 	for _, engine := range l.GetEngine() {
 		if engine.Scan(req, queryString) {
@@ -58,9 +58,11 @@ func (l *Language) Detect(req *http.Request, queryString QueryString) {
 		}
 	}
 
-	fmt.Printf("Confidence for %s is %.2f %%\n\n",l.GetName(), l.GetConfidence())
+	fmt.Printf("Confidence for %s is %.2f %%\n",l.GetName(), l.GetConfidence())
 
 	if l.GetConfidence() == 100.00 {
-		fmt.Printf("Language %s is detected\n\n", l.GetName())
+		fmt.Printf("\nSuccessfully detected %s language\n\n", l.GetName())
 	}
+
+	fmt.Printf("--------------------------------------------------\n\n")
 }
