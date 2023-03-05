@@ -9,13 +9,15 @@ func Factory(languageType string) (ILanguage, error) {
         return newNode(), nil
     case "ruby":
         return newRuby(), nil
+    case "python":
+        return newPython(), nil
     default:
         return nil, fmt.Errorf("language %s not supported", languageType)
     }
 }
 
 func GetSupportedLanguages() []string {
-    return []string{"nodeJS", "ruby"}
+    return []string{"nodeJS", "ruby", "python"}
 }
 
 func IsLanguageSupported(languageType string) bool {
