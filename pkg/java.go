@@ -10,7 +10,7 @@ func newJava() ILanguage {
 						name: "Java",
 						confidence: 0.0,
 						Engines: []IEngine{
-							newExpressionLanguage(),
+							newJavaEl(),
 							newFreemarker(),
 							newGroovy(),
 							newGeneric(),
@@ -153,7 +153,7 @@ func newPebble() IEngine {
 			name: "Pebble",
 			confidence: 0.0,
 			payloads: []Payload{
-				{ Name: "Pebble_1", Value: "{{ someString.toUPPERCASE() }}", Expected: "SOMESTRING"},
+				{ Name: "Pebble_1", Value: "{{ Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4C.toUPPERCASE() }}", Expected: "AX8DXG86YIRQYR4EN4NDNXMKEFQSOTES6ZM3IN4C"},
 				{ Name: "Pebble_2", Value: "{% 21389*90 %}", Expected: "1925010"},
 			},
 		},
@@ -171,7 +171,7 @@ func newJinjava() IEngine {
 			confidence: 0.0,
 			payloads: []Payload{
 				{ Name: "Jinjava_1", Value: "{{ request }}", Expected: ".context.TemplateContextRequest@"},
-				{ Name: "Jinjava_2", Value: "{{'someString'.toUpperCase()}} ", Expected: "SOMESTRING"},
+				{ Name: "Jinjava_2", Value: "{{'Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4C'.toUpperCase()}} ", Expected: "AX8DXG86YIRQYR4EN4NDNXMKEFQSOTES6ZM3IN4C"},
 			},
 		},
 	}
@@ -187,8 +187,8 @@ func newHubl() IEngine {
 			name: "HubL",
 			confidence: 0.0,
 			payloads: []Payload{
-				{ Name: "HubL_1", Value: "{{'someString'.toUpperCase()}}", Expected: "SOMESTRING"},
-				{ Name: "HubL_2", Value: "{{'someString'.concat('b')}}", Expected: "someStringb"},
+				{ Name: "HubL_1", Value: "{{'Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4C'.toUpperCase()}}", Expected: "AX8DXG86YIRQYR4EN4NDNXMKEFQSOTES6ZM3IN4C"},
+				{ Name: "HubL_2", Value: "{{'Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4C'.concat('b')}}", Expected: "Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4Cb"},
 				{ Name: "HubL_3", Value: "{{'a'.getClass()}}", Expected: "java.lang.String"},
 				{ Name: "HubL_4", Value: "{{request.getClass()}}", Expected: "com.hubspot.content.hubl.context.TemplateContextRequest"},
 				{ Name: "HubL_5", Value: "{{request.getClass().getDeclaredMethods()[0]}}", Expected: "public boolean com.hubspot.content.hubl.context.TemplateContextRequest.isDebug()"},
@@ -197,21 +197,21 @@ func newHubl() IEngine {
 	}
 }
 
-type expressionLanguage struct {
+type JavaEl struct {
 	Engine
 }
 
-func newExpressionLanguage() IEngine {
-	return &expressionLanguage{
+func newJavaEl() IEngine {
+	return &JavaEl{
 		Engine: Engine{
-			name: "ExpressionLanguage",
+			name: "Java Expression Language",
 			confidence: 0.0,
 			payloads: []Payload{
-				{ Name: "ExpressionLanguage_1", Value: "${21389+219839}", Expected: "241228"},
-				{ Name: "ExpressionLanguage_2", Value: "${21389*90}", Expected: "1925010"},
-				{ Name: "ExpressionLanguage_3", Value: "${\"someString\"}", Expected: "\"someString\""},
-				{ Name: "ExpressionLanguage_4", Value: "#{21389+219839}", Expected: "241228"},
-				{ Name: "ExpressionLanguage_5", Value: "#{21389*90}", Expected: "1925010"},
+				{ Name: "JavaExpressionLanguage_1", Value: "${21389+219839}", Expected: "241228"},
+				{ Name: "JavaExpressionLanguage_2", Value: "${21389*90}", Expected: "1925010"},
+				{ Name: "JavaExpressionLanguage_3", Value: "${\"Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4C\"}", Expected: "\"Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4C\""},
+				{ Name: "JavaExpressionLanguage_4", Value: "#{21389+219839}", Expected: "241228"},
+				{ Name: "JavaExpressionLanguage_5", Value: "#{21389*90}", Expected: "1925010"},
 			},
 		},
 	}

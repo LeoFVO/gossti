@@ -21,6 +21,7 @@ func (s *QueryString) Check(req *http.Request, payload Payload) bool {
 	client := &http.Client{}
 
 	q := req.URL.Query()
+	q.Del(s.Name) // Remove the query string from the request to avoid false positives
 	q.Add(s.Name, strings.Replace(s.Value, "SSTI", payload.Value, -1))
 	req.URL.RawQuery = q.Encode()
 
