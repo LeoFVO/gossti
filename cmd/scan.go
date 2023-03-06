@@ -90,7 +90,7 @@ func init() {
 
 	newCmd.Flags().StringP("method", "X", "GET", "The HTTP method to use")
 
-	newCmd.Flags().StringP("user-agent", "", "russti 1.0.0", "Custom user-agent to use")
+	newCmd.Flags().StringP("user-agent", "", "gossti 1.0.0", "Custom user-agent to use")
 
 	newCmd.Flags().StringP("languages", "l", "all", fmt.Sprintf("comma-separated languages names, can be one of the following: all, %s", strings.Join(gossti.GetSupportedLanguages(), ", ")))
 
