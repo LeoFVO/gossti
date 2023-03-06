@@ -1,11 +1,14 @@
 package gossti
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // Factory pattern to create a language
 func Factory(languageType string) (ILanguage, error) {
-    switch languageType {
-    case "nodeJS":
+    switch strings.ToLower(languageType) {
+    case "nodejs", "node":
         return newNode(), nil
     case "ruby":
         return newRuby(), nil
@@ -13,18 +16,20 @@ func Factory(languageType string) (ILanguage, error) {
         return newPython(), nil
     case "java":
         return newJava(), nil
+    case "php":
+        return newPhp(), nil
     default:
         return nil, fmt.Errorf("language %s not supported", languageType)
     }
 }
 
 func GetSupportedLanguages() []string {
-    return []string{"nodeJS", "ruby", "python", "java"}
+    return []string{"nodejs", "node", "ruby", "python", "java", "php"}
 }
 
 func IsLanguageSupported(languageType string) bool {
     for _, language := range GetSupportedLanguages() {
-        if language == languageType {
+        if language == strings.ToLower(languageType) {
             return true
         }
     }
