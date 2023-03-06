@@ -41,7 +41,7 @@ func newJinja2() IEngine {
 			name: "Jinja2",
 			confidence: 0.0,
 			payloads: []Payload{
-				{ Name: "Jinja2_1", Value: "{{7*'7'}}", Expected: "7777777"},
+				{ Name: "Jinja2_1", Value: "{{20*'7'}}", Expected: "77777777777777777777"},
 				{ Name: "Jinja2_2", Value: "${21389*90}", Expected: "${21389*90}"},
 			},
 		},
@@ -58,7 +58,7 @@ func newTornado() IEngine {
 			name: "Torando",
 			confidence: 0.0,
 			payloads: []Payload{
-				{ Name: "Torando_1", Value: "{{7*'7'}}", Expected: "7777777"},
+				{ Name: "Torando_1", Value: "{{20*'7'}}", Expected: "77777777777777777777"},
 				{ Name: "Torando_2", Value: "{{21389*90}}", Expected: "1925010"},
 				{ Name: "Torando_3", Value: "${21389*90}", Expected: "${21389*90}"},
 			},
