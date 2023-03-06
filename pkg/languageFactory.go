@@ -8,7 +8,7 @@ import (
 // Factory pattern to create a language
 func Factory(languageType string) (ILanguage, error) {
     switch strings.ToLower(languageType) {
-    case "nodejs", "node":
+    case "nodejs":
         return newNode(), nil
     case "ruby":
         return newRuby(), nil
@@ -18,13 +18,15 @@ func Factory(languageType string) (ILanguage, error) {
         return newJava(), nil
     case "php":
         return newPhp(), nil
+    case "golang":
+        return newGo(), nil
     default:
         return nil, fmt.Errorf("language %s not supported", languageType)
     }
 }
 
 func GetSupportedLanguages() []string {
-    return []string{"nodejs", "node", "ruby", "python", "java", "php"}
+    return []string{"nodejs", "ruby", "python", "java", "php", "golang"}
 }
 
 func IsLanguageSupported(languageType string) bool {
