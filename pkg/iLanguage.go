@@ -1,8 +1,9 @@
 package gossti
 
 import (
-	"fmt"
 	"net/http"
+
+	log "github.com/sirupsen/logrus"
 )
 
 // ILanguage is the interface for all languages that will be used to detect the language
@@ -25,21 +26,25 @@ type Language struct {
 
 // Increment the confidence of the language identification
 func (l *Language) IncrementConfidence() {
+	log.Tracef("Incrementing confidence for language %s", l.name)
 	l.confidence++
 }
 
 // Returns the confidence of the language identification
 func (l *Language) GetConfidence() float64 {
+	log.Tracef("Getting confidence for language %s", l.name)
 	return l.confidence / float64(len(l.Engines)) * 100
 }
 
 // Returns the list of engines that will be used to detect the language
 func (l *Language) GetEngine() []IEngine {
+	log.Tracef("Getting engines for language %s", l.name)
 	return l.Engines
 }
 
 // Set the list of engines that will be used to detect the language
 func (l *Language) SetEngine(engines []IEngine) {
+	log.Tracef("Setting engines for language %s", l.name)
 	l.Engines = engines
 }
 
@@ -50,19 +55,20 @@ func (l *Language) GetName() string {
 
 // Set the name of the language
 func (l *Language) Detect(req *http.Request, queryString QueryString) {
-	fmt.Printf("Starting detection for %s language.\n", l.GetName())
+	log.Infof("Starting detection for %s language.\n", l.GetName())
 
 	for _, engine := range l.GetEngine() {
+		log.Debug("   Trying engine ", engine.GetName())
 		if engine.Scan(req, queryString) {
 			l.IncrementConfidence()
 		}
 	}
 
-	fmt.Printf("Confidence for %s is %.2f %%\n",l.GetName(), l.GetConfidence())
+	log.Printf("Confidence for %s is %.2f %%\n",l.GetName(), l.GetConfidence())
 
 	if l.GetConfidence() == 100.00 {
-		fmt.Printf("\nSuccessfully detected %s language\n\n", l.GetName())
+		log.Warnf("Successfully detected %s language\n\n", l.GetName())
 	}
 
-	fmt.Printf("--------------------------------------------------\n\n")
+	log.Printf("--------------------------------------------------\n\n")
 }

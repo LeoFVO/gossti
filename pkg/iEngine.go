@@ -1,8 +1,9 @@
 package gossti
 
 import (
-	"fmt"
 	"net/http"
+
+	log "github.com/sirupsen/logrus"
 )
 
 // IEngine is the interface for all engines that will be used to detect the language
@@ -10,6 +11,7 @@ import (
 type IEngine interface {
 	Scan(req *http.Request, queryString QueryString) bool
 
+	GetName() string
 	GetConfidence() float64
 	IncrementConfidence()
 }
@@ -23,27 +25,38 @@ type Engine struct {
 
 // Increment the confidence of the engine identification
 func (e *Engine) IncrementConfidence() {
+	log.Tracef("Incrementing confidence for engine %s", e.name)
 	e.confidence++
 }
 
 // Returns the confidence of the engine identification
 func (e *Engine) GetConfidence() float64 {
+	log.Tracef("Getting confidence for engine %s", e.name)
 	return e.confidence / float64(len(e.payloads)) * 100
+}
+
+// Returns the name of the engine
+func (e *Engine) GetName() string {
+	return e.name
 }
 
 // Try each well known payload to see if the engine is vulnerable 
 // and deduce the confidence
 // Returns true if the confidence is above 50%
 func (e *Engine) Scan(req *http.Request, queryString QueryString) bool {
-	fmt.Printf("-> Trying to detect %s engine.\n", e.name)
+	log.Infof("-> Trying to detect %s engine.\n", e.name)
 
 	for _, payload := range e.payloads {
+		log.WithFields(log.Fields{
+			"injected": payload.Value,
+			"expected": payload.Expected,
+		}).Debugf("   Trying payload %s\n", payload.Name)
 		if queryString.Check(req, payload) {
-			fmt.Printf("Payload %s is injectable\n", payload.Name)
+			log.Warnf("   Payload %s is injectable\n", payload.Name)
 			e.IncrementConfidence()
 		}
 	}
 
-	fmt.Printf("   Confidence for %s is %.2f %%\n\n", e.name, e.GetConfidence())
+	log.Infof("   Confidence for %s is %.2f %%\n\n", e.name, e.GetConfidence())
 	return e.GetConfidence() >= 50.00
 }
