@@ -55,12 +55,12 @@ type tornado struct {
 func newTornado() IEngine {
 	return &tornado{
 		Engine: Engine{
-			name: "Torando",
+			name: "Tornado",
 			confidence: 0.0,
 			payloads: []Payload{
-				{ Name: "Torando_1", Value: "{{20*'7'}}", Expected: "77777777777777777777"},
-				{ Name: "Torando_2", Value: "{{21389*90}}", Expected: "1925010"},
-				{ Name: "Torando_3", Value: "${21389*90}", Expected: "${21389*90}"},
+				{ Name: "Tornado_1", Value: "{{20*'7'}}", Expected: "77777777777777777777"},
+				{ Name: "Tornado_2", Value: "{{21389*90}}", Expected: "1925010"},
+				{ Name: "Tornado_3", Value: "${21389*90}", Expected: "${21389*90}"},
 			},
 		},
 	}
