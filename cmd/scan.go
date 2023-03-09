@@ -2,9 +2,10 @@ package cmd
 
 import (
 	"fmt"
-	gossti "gossti/pkg"
 	"net/http"
 	"strings"
+
+	gossti "github.com/LeoFVO/gossti/pkg"
 
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"

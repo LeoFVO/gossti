@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gossti/cmd"
+	"github.com/LeoFVO/gossti/cmd"
 )
 
 func main() {
