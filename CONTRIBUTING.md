@@ -150,7 +150,7 @@ git tag -a v1.0 -m "Release v1.0.0"
 git push origin v1.0
 ```
 
-You can now use the [GitHub release interface](https://github.com/LeoFVO/<tool_name>/releases/new) to create a new release.
+You can now use the [GitHub release interface](https://github.com/LeoFVO/gossti/releases/new) to create a new release.
 
 The release process will automatically:
 
