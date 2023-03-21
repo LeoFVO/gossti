@@ -10,7 +10,7 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "GoSSTI",
+	Use:   "gossti",
 	Short: "GoSSTI is a SSTI scanner for web application. Developed in Go.",
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		verbose, err := cmd.Flags().GetCount("verbose")

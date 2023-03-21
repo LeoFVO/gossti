@@ -20,13 +20,15 @@ func Factory(languageType string) (ILanguage, error) {
         return newPhp(), nil
     case "golang":
         return newGo(), nil
+    case "perl":
+        return newPerl(), nil
     default:
         return nil, fmt.Errorf("language %s not supported", languageType)
     }
 }
 
 func GetSupportedLanguages() []string {
-    return []string{"nodejs", "ruby", "python", "java", "php", "golang"}
+    return []string{"nodejs", "ruby", "python", "java", "php", "golang","perl"}
 }
 
 func IsLanguageSupported(languageType string) bool {
