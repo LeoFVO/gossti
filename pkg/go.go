@@ -26,9 +26,8 @@ func newGoEL() IEngine {
 			name: "GoLang Expression Language",
 			confidence: 0.0,
 			payloads: []Payload{
-				{ Name: "GoExpressionLanguage_1", Value: "{{printf \"%%s\" \"rqXEcdfab9H9NyaBkFJRkMqbGBAQS5sYY6kD53d6\"}}", Expected: "rqXEcdfab9H9NyaBkFJRkMqbGBAQS5sYY6kD53d6"},
-				{ Name: "GoExpressionLanguage_2", Value: "{{html \"Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4C\"}}", Expected: "Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4C"},
-				{ Name: "GoExpressionLanguage_3", Value: "{{js \"jFL4GnD8hmhXeEqioYnDQLgmSD6QQmnKFzdfXQK7\"}}", Expected: "jFL4GnD8hmhXeEqioYnDQLgmSD6QQmnKFzdfXQK7"},
+				{ Name: "GoExpressionLanguage_1", Value: "{{printf \"%%s%%s\" \"rqXEcdfab9H9NyaBkFJRkMqbGBAQS5sYY6kD53d6\" \"Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4C\"}}", Expected: "rqXEcdfab9H9NyaBkFJRkMqbGBAQS5sYY6kD53d6Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4C"},
+				{ Name: "GoExpressionLanguage_2", Value: "{{239892183 -}} < {{- 4521368712}}", Expected: "239892183>4521368712"},
 			},
 		},
 	}
