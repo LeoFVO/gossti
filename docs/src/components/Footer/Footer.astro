@@ -1,0 +1,31 @@
+---
+import AvatarList from './AvatarList.astro';
+type Props = {
+	path: string;
+};
+const { path } = Astro.props;
+---
+
+<footer>
+	<AvatarList path={path} />
+	<span>
+		Made by <a href="https://twitter.com/leofvo">LeoFVO</a><br>
+		Powered by <a href="https://astro.build">Astro</a>
+	</span>
+</footer>
+
+<style>
+	footer {
+		margin-top: auto;
+		padding: 2rem;
+		border-top: 3px solid var(--theme-divider);
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+	footer > span {
+		font-size: 0.8rem;
+		color: var(--theme-text-light);
+	}
+</style>
