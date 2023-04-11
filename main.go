@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/LeoFVO/<tool_name>/cmd"
+	"github.com/LeoFVO/go4hackers/cmd"
 )
 
 func main() {
