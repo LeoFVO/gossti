@@ -10,6 +10,7 @@ Update the repository name in the following files:
 
 - [index.astro](./src/pages/index.astro)
 - [astro.config.mjs](./astro.config.mjs)
+- [consts.ts](./src/consts.ts)
 
 _replace `go_tool_starter` with your repository name_
 

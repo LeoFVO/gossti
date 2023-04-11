@@ -1,6 +1,6 @@
 export const SITE = {
-  title: 'Documentation',
-  description: 'Your website description.',
+  title: 'go4hackers',
+  description: 'go4hackers documentation site',
   defaultLanguage: 'en-us',
 } as const;
 
@@ -38,24 +38,24 @@ export type Sidebar = Record<
 >;
 export const SIDEBAR: Sidebar = {
   en: {
-    'Section Header': [
+    'Start here': [
       {
         text: 'Introduction',
         link: `.${import.meta.env.BASE_URL}en/introduction`,
       },
       {
-        text: 'Page 2',
-        link: `.${import.meta.env.BASE_URL}en/page-2`,
-      },
-      {
-        text: 'Page 3',
-        link: `.${import.meta.env.BASE_URL}en/page-3`,
+        text: 'Installation',
+        link: `.${import.meta.env.BASE_URL}en/installation`,
       },
     ],
-    'Another Section': [
+    Reference: [
       {
-        text: 'Page 4',
-        link: `.${import.meta.env.BASE_URL}en/page-4`,
+        text: 'License',
+        link: `.${import.meta.env.BASE_URL}en/license`,
+      },
+      {
+        text: 'Contribute',
+        link: `.${import.meta.env.BASE_URL}en/contribute`,
       },
     ],
   },
