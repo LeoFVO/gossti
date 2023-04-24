@@ -1,9 +1,28 @@
 ---
-title: 'How to contribute'
-description: 'How to contribute to the project'
+title: 'Contributing'
 ---
 
-## Workflow
+# Contributing to {process.env.NEXT_PUBLIC_REPOSITORY.split('/')[1]}
+
+Thank you for investing your time in contributing to the Morty project!
+
+In this guide you will get an overview of the contribution workflow from opening an issue, creating a PR, committing your changes, and getting your PR merged.
+
+If you are lost at any point, don't hesitate to file an issue on [GitHub](https://github.com/morty-faas/morty-faas.github.io/issues/new?assignees=&labels=question&template=question.yml&title=%5BQUESTION%5D%3A+) !
+
+## Getting started
+
+### Create a new issue
+
+First, you have to create an issue in the right component. Depending on what changes you want to bring, multiple components can be impacted. In your issue, please be as precise as possible to allow other contributors to understand what you will implement / fix. It will make it easier for other developers if you need help or if your issue does not make sense.
+
+> See [GitHub - Creating an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue).
+
+### Fork the repository
+
+Once your issue is ready, fork the repository in order to do your changes freely without affecting the original project.
+
+> See [GitHub - Fork a repo](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue).
 
 ### Open a Pull Request
 
@@ -117,51 +136,3 @@ The footer should contain any information about Breaking Changes and is also the
 ### Sign commit message
 
 Please consider signing the commit message at least with `Signed-Off-By`.
-
-## Setup your developer environment
-
-### Prerequisites
-
-- [Git](https://git-scm.com/)
-- [Go](https://golang.org/)
-- [Docker](https://www.docker.com/)
-
-### Running code in your local environment
-
-```bash
-go run main.go <args>
-```
-
-### Running tests
-
-```bash
-go test ./...
-```
-
-### Building the project
-
-```bash
-go build
-```
-
-## Making a release
-
-Our release process is fully automated. To make a release, you just need to create a new tag on the master branch.
-
-```bash
-git tag -a v1.0 -m "Release v1.0.0"
-git push origin v1.0
-```
-
-You can now use the [GitHub release interface](https://github.com/LeoFVO/go4hackers/releases/new) to create a new release.
-
-The release process will automatically:
-
-- Build the project
-- Create a new release on GitHub
-- Upload the binaries to the release
-- Create a new Docker image
-
-## Contact
-
-If you have any questions, feel free to open an issue.
