@@ -19,6 +19,7 @@ Please ensure that your environment match the following requirements :
 To run the website locally :
 
 ```bash
+export NEXT_PUBLIC_REPOSITORY=leofvo/go4hackers
 pnpm install
 pnpm dev
 ```

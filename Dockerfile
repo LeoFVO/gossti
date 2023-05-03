@@ -4,7 +4,7 @@ ENV CGO_ENABLED=0
 COPY go.mod /src/
 RUN go mod download
 COPY . .
-RUN go build -a -o <tool_name> -trimpath
+RUN go build -a -o go4hackers -trimpath
 
 FROM alpine:latest
 
@@ -12,12 +12,12 @@ RUN apk add --no-cache ca-certificates \
     && rm -rf /var/cache/*
 
 RUN mkdir -p /app \
-    && adduser -D <tool_name> \
-    && chown -R <tool_name>:<tool_name> /app
+    && adduser -D go4hackers \
+    && chown -R go4hackers:go4hackers /app
 
-USER <tool_name>
+USER go4hackers
 WORKDIR /app
 
-COPY --from=builder /src/<tool_name> .
+COPY --from=builder /src/go4hackers .
 
-ENTRYPOINT [ "./<tool_name>" ]
+ENTRYPOINT [ "./go4hackers" ]
