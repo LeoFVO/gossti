@@ -19,12 +19,12 @@ Please ensure that your environment match the following requirements :
 To run the website locally :
 
 ```bash
-export NEXT_PUBLIC_REPOSITORY=leofvo/go4hackers
+export NEXT_PUBLIC_REPOSITORY=leofvo/gossti
 pnpm install
 pnpm dev
 ```
 
-The website should now be up and running at http://localhost:3000/go4hackers. Next.js will automatically reload your changes. When you're done, stop the server by hitting `CTRL+C`.
+The website should now be up and running at http://localhost:3000/gossti. Next.js will automatically reload your changes. When you're done, stop the server by hitting `CTRL+C`.
 
 ## Setup
 

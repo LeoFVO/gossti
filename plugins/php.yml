@@ -1,0 +1,49 @@
+version: 1.0.0
+name: PHP
+engines:
+  - name: Twig
+    payloads:
+      - id: php_twig_528ab7283F
+        payload: '{{21389+219839}}'
+        response:
+          expected: 241228
+          invalidate: '{{21389+219839}}'
+          error: false
+      - id: php_twig_A3A9Ca64b6
+        payload: "{{21389*'90'}}"
+        response:
+          expected: 1925010
+          invalidate: "{{21389*'90'}}"
+          error: false
+      - id: php_twig_aeeAa32d2F
+        payload: '${21389*90}'
+        response:
+          expected: '${21389*90}'
+          invalidate: '${1925010}'
+          error: false
+  - name: Smarty
+    payloads:
+      - id: php_smarty_8B9bB3533B
+        payload: '{21389+219839}'
+        response:
+          expected: 241228
+          invalidate: '{241228}'
+          error: false
+      - id: php_smarty_91CFa8B9c6
+        payload: '{21389*90}'
+        response:
+          expected: 1925010
+          invalidate: '{$21389*90}'
+          error: false
+      - id: php_smarty_b0D4efC5fD
+        payload: "{21389*'90'}"
+        response:
+          expected: 1925010
+          invalidate: "{$21389*'90'}"
+          error: false
+      - id: php_smarty_Ac751CDD79
+        payload: '${21389*90}'
+        response:
+          expected: $1925010
+          invalidate: '${1925010}'
+          error: false

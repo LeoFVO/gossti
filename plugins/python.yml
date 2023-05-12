@@ -1,0 +1,57 @@
+version: 1.0.0
+name: Python
+engines:
+  - name: Mako
+    payloads:
+      - id: python_mako_ecA9Ba9885
+        payload: ${21389+219839}
+        response:
+          expected: 241228
+          invalidate: ${241228}
+          error: false
+      - id: python_mako_73D88a12D3
+        payload: ${21389*90}
+        response:
+          expected: 1925010
+          invalidate: $1925010
+          error: false
+  - name: Jinja2
+    payloads:
+      - id: python_jinja2_8AA8eD57EE
+        payload: "{{20*'7'}}"
+        response:
+          expected: 77777777777777777777
+          invalidate: ${77777777777777777777}
+          error: false
+      - id: python_jinja2_D250eE8F14
+        payload: ${21389*90}
+        response:
+          expected: ${21389*90}
+          invalidate: ${1925010}
+          error: false
+      - id: python_jinja2_c6E1Eabb19
+        payload: '{{21389*90}}'
+        response:
+          expected: '{{21389*90}}'
+          invalidate: 1925010
+          error: false
+  - name: Tornado
+    payloads:
+      - id: python_tornado_A1CCa01f5a
+        payload: "{{20*'7'}}"
+        response:
+          expected: 77777777777777777777
+          invalidate: ${77777777777777777777}
+          error: false
+      - id: python_tornado_A1CCa01f5a
+        payload: '{{21389*90}}'
+        response:
+          expected: 1925010
+          invalidate: ${1925010}
+          error: false
+      - id: python_tornado_A1CCa01f5a
+        payload: ${21389*90}
+        response:
+          expected: ${21389*90}
+          invalidate: ${1925010}
+          error: false

@@ -1,0 +1,41 @@
+version: 1.0.0
+name: Java
+engines:
+  - name: GenericJava
+    payloads:
+      - id: java_generic_6067e76b35
+        payload: '${21389+219839}'
+        response:
+          expected: 241228
+          invalidate: '${21389+219839}'
+          error: false
+      - id: java_generic_875f56d61F
+        payload: '${21389*90}'
+        response:
+          expected: 1925010
+          invalidate: '${21389*90}'
+          error: false
+      - id: java_generice_C4f22e0ED0
+        payload: '${{21389*90}}'
+        response:
+          expected: 1925010
+          invalidate: '${{21389*90}}'
+          error: false
+  - name: FreeMarker
+    payloads:
+  - name: Velocity
+    payloads:
+  - name: Groovy
+    payloads:
+  - name: Thymeleaf
+    payloads:
+  - name: Spring
+    payloads:
+  - name: Pebble
+    payloads:
+  - name: Jinjava
+    payloads:
+  - name: hubl
+    payloads:
+  - name: JavaEl
+    payloads:

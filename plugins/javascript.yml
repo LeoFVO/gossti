@@ -1,0 +1,53 @@
+version: 1.0.0
+name: JavaScript
+engines:
+  - name: Pug
+    payloads:
+      - id: javascript_pug_6067e76b35
+        payload: '#{21389*90}'
+        response:
+          expected: 1925010
+          invalidate: '#{1925010}'
+          error: false
+      - id: javascript_pug_875f56d61F
+        payload: '#{21389*90}'
+        response:
+          expected: 1925010
+          invalidate: '#1925010'
+          error: false
+  - name: Jade
+    payloads:
+      - id: javascript_jade_C4f22e0ED0
+        payload: '#{21389*90}'
+        response:
+          expected: 1925010
+          invalidate: '#{1925010}'
+          error: false
+      - id: javascript_jade_8DD6564CB0
+        payload: '#{21389*90}'
+        response:
+          expected: 1925010
+          invalidate: '#1925010'
+          error: false
+  - name: JsRender
+    payloads:
+      - id: javascript_jsrender_d2386C2EE4
+        payload: '{{:21389*90}}'
+        response:
+          expected: 1925010
+          invalidate: '{{:21389*90}}'
+          error: false
+  - name: Nunjucks
+    payloads:
+      - id: javascript_nunjucks_45CaB3E6DE
+        payload: '{{21389*90}}'
+        response:
+          expected: 1925010
+          invalidate: '21389*90'
+          error: false
+      - id: javascript_nunjucks_417bb80aaB
+        payload: '#{7*7}'
+        response:
+          expected: '#{7*7}'
+          invalidate: '#{49}'
+          error: false

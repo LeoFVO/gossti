@@ -4,7 +4,7 @@ ENV CGO_ENABLED=0
 COPY go.mod /src/
 RUN go mod download
 COPY . .
-RUN go build -a -o go4hackers -trimpath
+RUN go build -a -o gossti -trimpath
 
 FROM alpine:latest
 
@@ -12,12 +12,12 @@ RUN apk add --no-cache ca-certificates \
     && rm -rf /var/cache/*
 
 RUN mkdir -p /app \
-    && adduser -D go4hackers \
-    && chown -R go4hackers:go4hackers /app
+    && adduser -D gossti \
+    && chown -R gossti:gossti /app
 
-USER go4hackers
+USER gossti
 WORKDIR /app
 
-COPY --from=builder /src/go4hackers .
+COPY --from=builder /src/gossti .
 
-ENTRYPOINT [ "./go4hackers" ]
+ENTRYPOINT [ "./gossti" ]

@@ -1,8 +1,8 @@
 package main
 
-import (
-	"github.com/LeoFVO/go4hackers/cmd"
-)
+import "github.com/LeoFVO/gossti/cmd"
+
+
 
 func main() {
 		cmd.Execute()

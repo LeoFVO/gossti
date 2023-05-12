@@ -1,0 +1,43 @@
+version: 1.0.0
+name: Ruby
+engines:
+  - name: ERB
+    payloads:
+      - id: ruby_erb_5cF0C87C4a
+        payload: '<%= 21389+219839 %>'
+        response:
+          expected: 241228
+          invalidate: '21389+219839'
+          error: false
+      - id: ruby_erb_ac1EEeaeF7
+        payload: '{{21389*90}}'
+        response:
+          expected: '{{21389*90}}'
+          invalidate: '1925010'
+          error: false
+      - id: ruby_erb_fe7455FC53
+        payload: '${21389*90}'
+        response:
+          expected: '${21389*90}'
+          invalidate: '1925010'
+          error: false
+  - name: Slim
+    payloads:
+      - id: ruby_slim_CDcc8DC25B
+        payload: '{{21389*90}}'
+        response:
+          expected: '{{21389*90}}'
+          invalidate: '1925010'
+          error: false
+      - id: ruby_slim_A8C3595DaC
+        payload: '${21389*90}'
+        response:
+          expected: '${21389*90}'
+          invalidate: '1925010'
+          error: false
+      - id: ruby_slim_9B5B8d3CD3
+        payload: '<%= 21389+219839 %>'
+        response:
+          expected: '<%= 21389+219839 %>'
+          invalidate: '241228'
+          error: false
