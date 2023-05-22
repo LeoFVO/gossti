@@ -51,7 +51,6 @@ var (
 
 			formType, _ := cmd.Flags().GetString("form-type")
 			options.FormType = formType
-			
 			return ssti.Detect(url, options)
 		},
 	}
