@@ -73,8 +73,11 @@ engines:
     - `payload`: The payload to use
     - `response`: The response to expect
       - `expected`: The expected response
-      - `invalidate`: The payload to use to invalidate the cache
+      - `invalidate`: The payload to use to invalidate response
       - `error`: If the response is an error
+
+GoSSTI engine will replace the string "SSTI" in the provided options with the payload, looking for the response to contain the "expected" but not the "invalidate" value.
+If your payload should throw an error, you can set the "error" value to true. This will make GoSSTI engine looking for the "expected" value in the error message.
 
 To add a new payload, you can add a new payload in the `payloads` section of the plugin.
 
