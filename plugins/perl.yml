@@ -2,16 +2,16 @@ version: 1.0.0
 name: Perl
 engines:
   - name: Mojolicious
-      payloads:
-        - id: perl_mojolicious_25C3bC344a
-          payload: '<%= 21389+219839 %>'
-          response:
-            expected: 241228
-            invalidate: '<%= 241228 %>'
-            error: false
-        - id: perl_mojolicious_5AB935D06F
-          payload: '<%= 21389+219839 %>'
-          response:
-            expected: 241228
-            invalidate: '<%=241228%>'
-            error: false
+    payloads:
+      - id: perl_mojolicious_25C3bC344a
+        payload: '<%= 21389+219839 %>'
+        response:
+          expected: 241228
+          invalidate: '<%= 241228 %>'
+          error: false
+      - id: perl_mojolicious_5AB935D06F
+        payload: '<%= 21389+219839 %>'
+        response:
+          expected: 241228
+          invalidate: '<%=241228%>'
+          error: false

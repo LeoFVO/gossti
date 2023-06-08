@@ -2,30 +2,30 @@ version: 1.0.0
 name: .NET
 engines:
   - name: Razor
-      payloads:
-        - id: dotnet_razor_0Df64Ee0bE
-          payload: '@(21389+219839)'
-          response:
-            expected: 43372
-            invalidate: '@(43372)'
-            error: false
+    payloads:
+      - id: dotnet_razor_0Df64Ee0bE
+        payload: '@(21389+219839)'
+        response:
+          expected: 43372
+          invalidate: '@(43372)'
+          error: false
   - name: ASP
-      payloads:
-        - id: dotnet_asp_6aaF3f87Cc
-          payload: '<%= 21389+219839 %>'
-          response:
-            expected: 43372
-            invalidate: '@(43372)'
-            error: false
-        - id: dotnet_asp_1d51aFDB36
-          payload: '<%= \"uAnPoLhekuV6mH5Lp2re\"+\"k6GrhGWq3xwItdTkt3uB\" %>'
-          response:
-            expected: 'uAnPoLhekuV6mH5Lp2rek6GrhGWq3xwItdTkt3uB'
-            invalidate: '<%=uAnPoLhekuV6mH5Lp2rek6GrhGWq3xwItdTkt3uB%>'
-            error: false
-        - id: dotnet_asp_C3829A3ad1
-          payload: '<%= \"uAnPoLhekuV6mH5Lp2re\"+\"k6GrhGWq3xwItdTkt3uB\" %>'
-          response:
-            expected: 'uAnPoLhekuV6mH5Lp2rek6GrhGWq3xwItdTkt3uB'
-            invalidate: '<%= uAnPoLhekuV6mH5Lp2rek6GrhGWq3xwItdTkt3uB %>'
-            error: false
+    payloads:
+      - id: dotnet_asp_6aaF3f87Cc
+        payload: '<%= 21389+219839 %>'
+        response:
+          expected: 43372
+          invalidate: '@(43372)'
+          error: false
+      - id: dotnet_asp_1d51aFDB36
+        payload: '<%= \"uAnPoLhekuV6mH5Lp2re\"+\"k6GrhGWq3xwItdTkt3uB\" %>'
+        response:
+          expected: 'uAnPoLhekuV6mH5Lp2rek6GrhGWq3xwItdTkt3uB'
+          invalidate: '<%=uAnPoLhekuV6mH5Lp2rek6GrhGWq3xwItdTkt3uB%>'
+          error: false
+      - id: dotnet_asp_C3829A3ad1
+        payload: '<%= \"uAnPoLhekuV6mH5Lp2re\"+\"k6GrhGWq3xwItdTkt3uB\" %>'
+        response:
+          expected: 'uAnPoLhekuV6mH5Lp2rek6GrhGWq3xwItdTkt3uB'
+          invalidate: '<%= uAnPoLhekuV6mH5Lp2rek6GrhGWq3xwItdTkt3uB %>'
+          error: false

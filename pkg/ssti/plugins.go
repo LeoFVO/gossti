@@ -33,6 +33,25 @@ func GetPluginsFolder() string {
 
 	return folder
 }
+
+func GetPluginsVersion(name string) string {
+	path := fmt.Sprintf("%s/%s.yml", GetPluginsFolder(), name)
+	// check if file exists
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		log.Tracef("Plugin %s does not exist", path)
+		return "0.0.0"
+	}
+
+	log.Tracef("Get plugin version for language %s from plugin %s", name, path)
+
+	language, err := getLanguage(name)
+	if err != nil {
+		log.Fatalf("error: %v", err)
+	}
+
+	return language.Version
+}
+
 func getLanguage(name string) (Language, error) {
 	path := fmt.Sprintf("%s/%s.yml", GetPluginsFolder(), name)
 	log.Tracef("Load language %s from plugin %s", name, path)

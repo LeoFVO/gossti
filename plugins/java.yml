@@ -56,7 +56,7 @@ engines:
           invalidate: '${1925010}'
           error: false
       - id: java_velocity_7144eE5A82
-       payload: '${21389+219839}'
+        payload: '${21389+219839}'
         response:
           expected: 241228
           invalidate: '{241228}'
@@ -162,26 +162,26 @@ engines:
           invalidate: ''
           error: false
       - id: java_jinjava_1733FA7bFb
-        payload: '{{'Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4C'.toUpperCase()}}'
+        payload: "{{'Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4C'.toUpperCase()}}"
         response:
-          expected: AX8DXG86YIRQYR4EN4NDNXMKEFQSOTES6ZM3IN4C
+          expected: 'AX8DXG86YIRQYR4EN4NDNXMKEFQSOTES6ZM3IN4C'
           invalidate: 'Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4C'
           error: false
   - name: hubl
     payloads:
-      - id: java_hubl_
-        payload: '{{'a'.getClass()}}'
+      - id: java_hubl_eA0c92a2ab
+        payload: "{{'a'.getClass()}}"
         response:
           expected: 'java.lang.String'
           invalidate: ''
           error: false
-      - id: java_hubl_
+      - id: java_hubl_8fA1E6ebAb
         payload: '{{request.getClass()}}'
         response:
           expected: 'com.hubspot.content.hubl.context.TemplateContextRequest'
           invalidate: ''
           error: false
-      - id: java_hubl_
+      - id: java_hubl_2bCcFFf549
         payload: '{{request.getClass().getDeclaredMethods()[0]}}'
         response:
           expected: 'public boolean com.hubspot.content.hubl.context.TemplateContextRequest.isDebug()'
@@ -189,13 +189,13 @@ engines:
           error: false
   - name: JavaEl
     payloads:
-      - id: java_javael_
+      - id: java_javael_555837ffc7
         payload: '#{21389+219839}'
         response:
           expected: 241228
           invalidate: '#241228'
           error: false
-      - id: java_javael_
+      - id: java_javael_ea81f3999d
         payload: '${21389+219839}'
         response:
           expected: 241228

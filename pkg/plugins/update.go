@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 
 	"github.com/LeoFVO/gossti/pkg/ssti"
@@ -63,14 +64,59 @@ func UpdatePlugins() error {
 				log.Errorf("Invalid server response: %d\n", res.StatusCode)
 				return err
 			}
+
+			remoteVersion := res.String()[strings.Index(res.String(), "version:")+9 : strings.Index(res.String(), "name:")-1]
+			localVersion := ssti.GetPluginsVersion(strings.Split(strings.Split(tree.Path, "/")[1], ".")[0])
+
 			filename := strings.Split(tree.Path, "/")[1]
-			log.Debugf("Writing file '%s'", filename)
-			os.WriteFile(ssti.GetPluginsFolder() + "/" + filename, res.Bytes(), 0644)
-			pluginsUpdated++
+			
+			if isVersionGreater(remoteVersion, localVersion){
+				log.Warnf("Plugin '%s' is outdated, updating", filename)
+				log.Debugf("Writing file '%s'", filename)
+				err := os.WriteFile(ssti.GetPluginsFolder() + "/" + filename, res.Bytes(), 0644)
+				if err != nil {
+					log.Fatal(err)
+				}
+				pluginsUpdated++
+				} else {
+					log.Infof("Plugin '%s' is up to date", filename)
+					continue
+				}
 		}
 	}
 	
 	log.Warnf("Updated %d plugins", pluginsUpdated)
 
 	return nil
+}
+
+
+func isVersionGreater(version1 string, version2 string) bool {
+	// Splitting version strings into individual components
+	v1Components := strings.Split(version1, ".")
+	v2Components := strings.Split(version2, ".")
+
+	// Iterating over the components to compare
+	for i := 0; i < len(v1Components) && i < len(v2Components); i++ {
+		// Parsing the component values as integers
+		v1Value, _ := strconv.Atoi(v1Components[i])
+		v2Value, _ := strconv.Atoi(v2Components[i])
+
+		// Comparing the component values
+		if v1Value > v2Value {
+			return true
+		} else if v1Value < v2Value {
+			return false
+		}
+	}
+
+	// If all the common components are equal, checking if any remaining components exist in the first version
+	for i := len(v1Components); i < len(v2Components); i++ {
+		v2Value, _ := strconv.Atoi(v2Components[i])
+		if v2Value > 0 {
+			return false
+		}
+	}
+
+	return false
 }
