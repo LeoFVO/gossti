@@ -9,10 +9,11 @@ import (
 
 var (
 	RootCmd = &cobra.Command{
-		Use:     "detect",
+		Use:     "detect -u <url>",
 		Aliases: []string{"scan"},
 		Short: "Detect SSTI vulnerabilities",
 		Long:  `Detect SSTI vulnerabilities in a given URL`,
+		Example: `gossti detect -u http://example.com/?param1=SSTI&param2=value2`,
 		PreRunE: func(cmd *cobra.Command, args []string) error {
 			// Verify that the URL is valid
 			u, _ := cmd.Flags().GetString("url")

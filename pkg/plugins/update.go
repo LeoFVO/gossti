@@ -34,7 +34,9 @@ type (
 func UpdatePlugins() error {
 	log.Info("Updating plugins...")
 
-log.Debugf("GET request on '%s'", pluginsFolderEndpoint)
+	pluginsUpdated := 0
+
+	log.Debugf("GET request on '%s'", pluginsFolderEndpoint)
 	response, err := http.Get(pluginsFolderEndpoint)
 	if err != nil {
 		return err
@@ -64,9 +66,11 @@ log.Debugf("GET request on '%s'", pluginsFolderEndpoint)
 			filename := strings.Split(tree.Path, "/")[1]
 			log.Debugf("Writing file '%s'", filename)
 			os.WriteFile(ssti.GetPluginsFolder() + "/" + filename, res.Bytes(), 0644)
+			pluginsUpdated++
 		}
 	}
 	
-	log.Warn("All plugins updated")
+	log.Warnf("Updated %d plugins", pluginsUpdated)
+
 	return nil
 }
