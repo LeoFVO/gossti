@@ -4,9 +4,14 @@ GoSSTI is a SSTI scanner for web application. Developed in Go.
 
 ## Get started
 
+### First usage and/or update
+
+````bash
+gossti plugins update
+
 ### Basic Usage
 
-**USAGE:**  
+**USAGE:**
 `gossti detect -u <URL>`
 
 **OPTIONS:**
@@ -20,7 +25,7 @@ GoSSTI is a SSTI scanner for web application. Developed in Go.
 
 ### Advanced Usage with forms
 
-**USAGE:**  
+**USAGE:**
 `gossti detect -u <URL> -X POST --form 'field1=value1,field2=value2'`
 **OPTIONS:**
 --form strings Form fields to use (e.g. --form 'field1=value1,field2=value2')
@@ -61,7 +66,7 @@ engines:
           expected: 241228
           invalidate: ${241228}
           error: false
-```
+````
 
 - `version`: The version of the plugin
 - `name`: The name of the language

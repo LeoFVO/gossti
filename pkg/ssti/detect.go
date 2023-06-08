@@ -25,6 +25,9 @@ func Detect(url string, options Options) error {
 	cli := configureHttpClient(options)
 	log.Debugf("Sending %s request to %s", options.Method, url)
 
+	// When a language is detected, the loop will break
+	detected := false
+
 	languages := getAvailableLanguages()
 	for _, language := range languages {		
 		l, err := getLanguage(language)
@@ -33,7 +36,14 @@ func Detect(url string, options Options) error {
 			continue
 		}
 
-		l.Detect(url, cli, options)
+		detected = l.Detect(url, cli, options)
+		if detected {
+			break
+		}
+	}
+
+	if !detected {
+		log.Warn("No SSTI detected")
 	}
 
 	return nil

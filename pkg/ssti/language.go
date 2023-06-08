@@ -21,7 +21,6 @@ type Payload struct {
 	} `yaml:"response"`
 }
 
-
 type Engine struct {
 		Name string `yaml:"name"`
 		Payloads []Payload `yaml:"payloads"`
@@ -33,9 +32,11 @@ type Language struct {
 	Engines []Engine `yaml:"engines"`
 }
 
-func (l *Language) Detect(url string, cli *gentleman.Client, options Options) {
+func (l *Language) Detect(url string, cli *gentleman.Client, options Options) bool {
 	log.Tracef("Detecting SSTI for language %s using plugin version %s", l.Name, l.Version)
 	
+	detected := false
+
 	log.Infof("Starting detection for language %s", l.Name)
 	for _, engine := range l.Engines {
 		confidence, err := engine.Detect(url, cli, options)
@@ -47,16 +48,16 @@ func (l *Language) Detect(url string, cli *gentleman.Client, options Options) {
 		log.Tracef("Confidence for engine %s: %f", engine.Name, confidence)
 
 		if confidence == 1 {
+			detected = true
 			log.Warnf("Successfully detected SSTI using engine %s", engine.Name)
-		}
-
-
-		if confidence > 0.65 {
+		} else if confidence > 0.65 {
 			log.Warnf("Detected engine %s with confidence of %f", engine.Name, confidence)
 		}
 	}
 
 	log.Infof("Finished detection for language %s", l.Name)
+
+	return detected
 }
 
 func (l *Language) Exploit() {

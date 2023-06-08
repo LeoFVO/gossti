@@ -23,19 +23,181 @@ engines:
           error: false
   - name: FreeMarker
     payloads:
+      - id: java_freemarker_0c3D80FbFc
+        payload: '${21389+219839}'
+        response:
+          expected: 241228
+          invalidate: '{241228}'
+          error: false
+      - id: java_freemarker_0c3D80FbFc
+        payload: '${21389*90}'
+        response:
+          expected: 1925010
+          invalidate: '{21389*90}'
+          error: false
+      - id: java_freemarker_5F290d793b
+        payload: '{{21389*90}}'
+        response:
+          expected: '{{21389*90}}'
+          invalidate: '1925010'
+          error: false
+      - id: java_freemarker_768a94FEd3
+        payload: '#{{21389*90}}'
+        response:
+          expected: 1925010
+          invalidate: '#1925010'
+          error: false
   - name: Velocity
     payloads:
+      - id: java_velocity_6Ef7D9EfCb
+        payload: '#set($x=21389*90)${x}'
+        response:
+          expected: 1925010
+          invalidate: '${1925010}'
+          error: false
+      - id: java_velocity_7144eE5A82
+       payload: '${21389+219839}'
+        response:
+          expected: 241228
+          invalidate: '{241228}'
+          error: false
+      - id: java_velocity_2dCFbd89Fb
+        payload: '${21389*90}'
+        response:
+          expected: 1925010
+          invalidate: '{21389*90}'
+          error: false
   - name: Groovy
     payloads:
+      - id: java_groovy_0ccB8Cc129
+        payload: '${21389+219839}'
+        response:
+          expected: 241228
+          invalidate: '{241228}'
+          error: false
+      - id: java_groovy_c97f266c46
+        payload: '${21389*90}'
+        response:
+          expected: 1925010
+          invalidate: '{21389*90}'
+          error: false
   - name: Thymeleaf
     payloads:
+      - id: java_thymeleaf_EA2417dB8c
+        payload: '[[${21389*90}]]'
+        response:
+          expected: 1925010
+          invalidate: '[[1925010]]'
+          error: false
+      - id: java_thymeleaf_8E7CDdbfF4
+        payload: '${21389+219839}'
+        response:
+          expected: 241228
+          invalidate: '{241228}'
+          error: false
+      - id: java_thymeleaf_0E4eB323D4
+        payload: '${21389*90}'
+        response:
+          expected: 1925010
+          invalidate: '{21389*90}'
+          error: false
   - name: Spring
     payloads:
+      - id: java_spring_dEC8afDF5c
+        payload: '${21389+219839}'
+        response:
+          expected: 241228
+          invalidate: '{241228}'
+          error: false
+      - id: java_spring_fF89d4Aac5
+        payload: '${21389*90}'
+        response:
+          expected: 1925010
+          invalidate: '{21389*90}'
+          error: false
+      - id: java_spring_E1DA163bcB
+        payload: '#{21389+219839}'
+        response:
+          expected: 241228
+          invalidate: '#241228'
+          error: false
+      - id: java_spring_eb9c5A4b9C
+        payload: '*{21389+219839}'
+        response:
+          expected: 241228
+          invalidate: '*241228'
+          error: false
+      - id: java_spring_CBf6dbB4a9
+        payload: '@{21389+219839}'
+        response:
+          expected: 241228
+          invalidate: '@241228'
+          error: false
+      - id: java_spring_CabeFf66D8
+        payload: '~{21389+219839}'
+        response:
+          expected: 241228
+          invalidate: '~241228'
+          error: false
   - name: Pebble
     payloads:
+      - id: java_pebble_B29aD36AbF
+        payload: '{{ Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4C.toUPPERCASE() }}'
+        response:
+          expected: AX8DXG86YIRQYR4EN4NDNXMKEFQSOTES6ZM3IN4C
+          invalidate: 'Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4C'
+          error: false
+      - id: java_pebble_5423Aeafee
+        payload: '{% 21389*90 %}'
+        response:
+          expected: 1925010
+          invalidate: '{% 1925010 %}'
+          error: false
   - name: Jinjava
     payloads:
+      - id: java_jinjava_EcFdEc2dDD
+        payload: '{{ request }}'
+        response:
+          expected: '.context.TemplateContextRequest@'
+          invalidate: ''
+          error: false
+      - id: java_jinjava_1733FA7bFb
+        payload: '{{'Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4C'.toUpperCase()}}'
+        response:
+          expected: AX8DXG86YIRQYR4EN4NDNXMKEFQSOTES6ZM3IN4C
+          invalidate: 'Ax8dXg86yiRQyr4EN4ndNxmkEFQsotEs6zM3iN4C'
+          error: false
   - name: hubl
     payloads:
+      - id: java_hubl_
+        payload: '{{'a'.getClass()}}'
+        response:
+          expected: 'java.lang.String'
+          invalidate: ''
+          error: false
+      - id: java_hubl_
+        payload: '{{request.getClass()}}'
+        response:
+          expected: 'com.hubspot.content.hubl.context.TemplateContextRequest'
+          invalidate: ''
+          error: false
+      - id: java_hubl_
+        payload: '{{request.getClass().getDeclaredMethods()[0]}}'
+        response:
+          expected: 'public boolean com.hubspot.content.hubl.context.TemplateContextRequest.isDebug()'
+          invalidate: ''
+          error: false
   - name: JavaEl
     payloads:
+      - id: java_javael_
+        payload: '#{21389+219839}'
+        response:
+          expected: 241228
+          invalidate: '#241228'
+          error: false
+      - id: java_javael_
+        payload: '${21389+219839}'
+        response:
+          expected: 241228
+          invalidate: '$241228'
+          error: false
