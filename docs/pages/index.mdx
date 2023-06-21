@@ -1,31 +1,35 @@
 ---
-title: 'Introduction'
-description: 'Docs intro'
+title: 'GoSSTI - Official Documentation'
+description: 'GoSSTI is a SSTI scanner for web application.'
 ---
 
-GoSSTI is a SSTI scanner for web application. Developed in Go.
+GoSSTI is a SSTI scanner for web application. Developed in Go.  
+GoSSTI allow you to detect template engine of language running behind an existing application.
 
 ## How to Use
 
 **USAGE:**  
 `gossti detect -u <URL>`
 
+Actually, gossti doesn't provide dynamic parameters analysis. You have to replace the variables with the string "SSTI" as value.
+
 **OPTIONS:**
 
--h, --help help for detect command
--u, --url string The target IP or domain to scan
--C, --cookies strings Cookies to use (e.g. -C 'cookie1=value1; cookie2=value2')
--X, --method string The HTTP method to use (default "GET")
---user-agent string Custom user-agent to use (default "gossti 1.0.0")
+-h, --help help for detect command  
+-u, --url string The target IP or domain to scan  
+-C, --cookies strings Cookies to use (e.g. -C 'cookie1=value1; cookie2=value2')  
+-X, --method string The HTTP method to use (default "GET")  
+--user-agent string Custom user-agent to use (default "gossti 1.0.0")  
 --timeout duration Timeout for HTTP requests (e.g. 10s)
 
 ### Advanced Usage with forms
 
 **USAGE:**  
 `gossti detect -u <URL> -X POST --form 'field1=value1,field2=value2'`
-**OPTIONS:**
---form strings Form fields to use (e.g. --form 'field1=value1,field2=value2')
---form-item stringToString Form field to use (e.g. --form 'field1=value1' --form 'field2=value2') (default [])
+
+**OPTIONS:**  
+--form strings Form fields to use (e.g. --form 'field1=value1,field2=value2')  
+--form-item stringToString Form field to use (e.g. --form 'field1=value1' --form 'field2=value2')  
 --form-type string Form type to use (e.g. urlencoded, multipart) (default "urlencoded")
 
 ### Some examples
@@ -34,60 +38,13 @@ Using GET method:
 
 `gossti -u http://example.com/something?name=SSTI`
 
-Using POST method and only NodeJS:
+Using POST method and multipart form:
 
-`gossti -u http://example.com/something?name=SSTI -X POST --form 'field1=value1,field2=value2' --form-type multipart`
+`gossti -u http://example.com/something -X POST --form 'field1=SSTI,field2=value2' --form-type multipart`
 
 Using PUT method and custom user-agent:
 
 `gossti -u http://example.com/something?name=SSTI -X PUT --user-agent "custom-agent 1.0"`
-
-## Using custom payloads
-
-### Document format
-
-Each plugins concern a single language, all plugins can be found in the plugins folder named like this: `<language>.yml`.
-
-The document format is the following:
-
-```yaml
-version: 1.0.0
-name: Python
-engines:
-  - name: Mako
-    payloads:
-      - id: python_mako_ecA9Ba9885
-        payload: ${21389+219839}
-        response:
-          expected: 241228
-          invalidate: ${241228}
-          error: false
-```
-
-- `version`: The version of the plugin
-- `name`: The name of the language
-- `engines`: The template engines of the language
-  - `name`: The name of the template engine
-  - `payloads`: The payloads to use
-    - `id`: The ID of the payload
-    - `payload`: The payload to use
-    - `response`: The response to expect
-      - `expected`: The expected response
-      - `invalidate`: The payload to use to invalidate response
-      - `error`: If the response is an error
-
-GoSSTI engine will replace the string "SSTI" in the provided options with the payload, looking for the response to contain the "expected" but not the "invalidate" value.
-If your payload should throw an error, you can set the "error" value to true. This will make GoSSTI engine looking for the "expected" value in the error message.
-
-To add a new payload, you can add a new payload in the `payloads` section of the plugin.
-
-Define the payload ID like this: `<language>_<template_engine>_<random_string>`
-
-You can generate a random string with the following command:
-
-```bash
-python3 -c "import random; import string; print(''.join(random.choice(string.hexdigits) for i in range(10)))"
-```
 
 ## Getting Started
 

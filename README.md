@@ -4,15 +4,13 @@ GoSSTI is a SSTI scanner for web application. Developed in Go.
 
 ## Get started
 
-### First usage and/or update
-
-````bash
-gossti plugins update
-
-### Basic Usage
+GoSSTI is a SSTI scanner for web application. Developed in Go.
+GoSSTI allow you to detect template engine of language running behind an existing application.
 
 **USAGE:**
 `gossti detect -u <URL>`
+
+Actually, gossti doesn't provide dynamic parameters analysis. You have to replace the variables with the string "SSTI" as value.
 
 **OPTIONS:**
 
@@ -23,13 +21,20 @@ gossti plugins update
 --user-agent string Custom user-agent to use (default "gossti 1.0.0")
 --timeout duration Timeout for HTTP requests (e.g. 10s)
 
+NOTE: For the first usage, you need to download the gossti database with the following command:
+
+```bash
+gossti plugins update
+```
+
 ### Advanced Usage with forms
 
 **USAGE:**
 `gossti detect -u <URL> -X POST --form 'field1=value1,field2=value2'`
+
 **OPTIONS:**
 --form strings Form fields to use (e.g. --form 'field1=value1,field2=value2')
---form-item stringToString Form field to use (e.g. --form 'field1=value1' --form 'field2=value2') (default [])
+--form-item stringToString Form field to use (e.g. --form 'field1=value1' --form 'field2=value2')
 --form-type string Form type to use (e.g. urlencoded, multipart) (default "urlencoded")
 
 ### Some examples
@@ -38,9 +43,9 @@ Using GET method:
 
 `gossti -u http://example.com/something?name=SSTI`
 
-Using POST method and only NodeJS:
+Using POST method and multipart form:
 
-`gossti -u http://example.com/something?name=SSTI -X POST --form 'field1=value1,field2=value2' --form-type multipart`
+`gossti -u http://example.com/something -X POST --form 'field1=SSTI,field2=value2' --form-type multipart`
 
 Using PUT method and custom user-agent:
 
@@ -66,7 +71,7 @@ engines:
           expected: 241228
           invalidate: ${241228}
           error: false
-````
+```
 
 - `version`: The version of the plugin
 - `name`: The name of the language
